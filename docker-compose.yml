@@ -1,0 +1,19 @@
+version: '2'
+services:
+  data:
+    image: busybox
+    volumes:
+      - ./volume:/var/lib/mysql
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - data
+    container_name: mysql57
